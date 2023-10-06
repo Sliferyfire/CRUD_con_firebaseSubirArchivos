@@ -30,7 +30,12 @@ ruta.get("/api/buscarProductoPorId/:id",async (req,res)=>{
 });
 
 ruta.post("/api/editarProducto", subirArchivo(),async(req,res)=>{
-    req.body.foto= req.file.originalname;
+    try {
+        req.body.foto= req.file.originalname;
+    } catch (error) {
+        var usr = await buscarPorID(req.body.id);
+        req.body.foto= usr.foto;
+    }
     var error = await modificarProducto(req.body);
     if(error == 0)
         res.status(200).json("Producto modificado");

@@ -32,6 +32,12 @@ ruta.get("/api/buscarUsuarioPorId/:id",async (req,res)=>{
 });
 
 ruta.post("/api/editarUsuario",async(req,res)=>{
+    try {
+        req.body.foto= req.file.originalname;
+    } catch (error) {
+        var usr = await buscarPorID(req.body.id);
+        req.body.foto= usr.foto;
+    }
     var error = await modificarUsuario(req.body);
     //res.redirect("/")
     if(error == 0)

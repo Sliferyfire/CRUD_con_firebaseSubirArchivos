@@ -1,4 +1,5 @@
 var multer = require("multer");
+//var {buscarPorId} = require("../bd/productosBD")
 
 function subirArchivo() {
     var storage = multer.diskStorage({

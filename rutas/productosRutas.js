@@ -20,13 +20,19 @@ ruta.post("/nuevoproducto", subirArchivo(),async(req,res)=>{
 
 ruta.get("/editarproducto/:id",async (req,res)=>{
     var prod = await buscarPorID(req.params.id);
-    console.log(prod);
+    //console.log(prod);
     //res.end();
     res.render("productos/modificar",{prod})
 });
 
 ruta.post("/editarproducto", subirArchivo(),async(req,res)=>{
-    req.body.foto= req.file.originalname;
+    try {
+        req.body.foto= req.file.originalname;
+    } catch (error) {
+        var usr = await buscarPorID(req.body.id);
+        req.body.foto= usr.foto;
+    }
+    
     var error = await modificarProducto(req.body);
     res.redirect("/productos")
 });

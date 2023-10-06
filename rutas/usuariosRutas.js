@@ -26,10 +26,12 @@ ruta.get("/editar/:id",async (req,res)=>{
 });
 
 ruta.post("/editar", subirArchivo(), async(req,res)=>{
-    console.log(req.file);
-    console.log("----------");
-    console.log(req.body);
-    req.body.foto= req.file.originalname;
+    try {
+        req.body.foto= req.file.originalname;
+    } catch (error) {
+        var usr = await buscarPorID(req.body.id);
+        req.body.foto= usr.foto;
+    }
     var error = await modificarUsuario(req.body);
     res.redirect("/")
 });
