@@ -26,20 +26,21 @@ ruta.get("/editarproducto/:id",async (req,res)=>{
 });
 
 ruta.post("/editarproducto", subirArchivo(),async(req,res)=>{
+    var prod = await buscarPorID(req.body.id);
     try {
         req.body.foto= req.file.originalname;
+        if(req.file)
+            borrarArchivo(prod.foto);
     } catch (error) {
-        var usr = await buscarPorID(req.body.id);
-        req.body.foto= usr.foto;
+        req.body.foto= prod.foto;
     }
-    
     var error = await modificarProducto(req.body);
     res.redirect("/productos")
 });
 
 ruta.get("/borrarproducto/:id", async(req,res)=>{
-    var usr = await buscarPorID(req.params.id);
-    borrarArchivo(usr.foto);
+    var prod = await buscarPorID(req.params.id);
+    borrarArchivo(prod.foto);
     await borrarProducto(req.params.id);
     res.redirect("/productos");
 });
