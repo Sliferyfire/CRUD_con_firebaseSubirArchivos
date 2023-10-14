@@ -1,0 +1,115 @@
+<div class="container mt-5">
+    <div class="card">
+        <form action="/validarLogin" method="post">
+            <div class="card-header">
+                <h1>Login</h1>
+            </div>
+            <div class="card-body">
+                <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Usuario">
+                <input class="form-control mb-3" type="password" name="password" id="password" placeholder="Contraseña" value="">
+            </div>
+            <div class="card_footer">
+                <button class="form-control btn btn-primary" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container mt-5">
+    <div class="card">
+        <form action="/nuevousuario" method="post" enctype="multipart/form-data">
+            <div class="card-header">
+                <h1>Nuevo usuario</h1>
+            </div>
+            <div class="card-body">
+                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" autofocus>
+                <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Usuario">
+                <input class="form-control mb-3" type="text" name="password" id="password" placeholder="Password">
+                <input class="form-control mb-3" type="file" name="foto" id="foto" placeholder="Foto">
+            </div>
+            <div class="card_footer">
+                <button class="form-control btn btn-primary" type="submit">Guardar usuario</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<div class="container mt-5">
+    <div class="card">
+        <form action="/editar" method="post" enctype="multipart/form-data">
+            <div class="card-header">
+                <h1>Modificar usuario</h1>
+            </div>
+            <div class="card-body">
+                <input type="hidden" name="id" id="id" value="<%= user.id%>">
+                <input type="hidden" name="passwordViejo" id="passwordViejo" value="<%= user.password%>">
+                <input type="hidden" name="saltViejo" id="saltViejo" value="<%= user.salt%>">
+                <input type="hidden" name="fotoVieja" id="fotoVieja" value="<%= user.foto%>">
+                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" value="<%= user.nombre%>" autofocus>
+                <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Usuario" value="<%= user.usuario%>">
+                <input class="form-control mb-3" type="text" name="password" id="password" placeholder="Escribe un nuevo password o deja en blanco para conservarlo" value="">
+                <input class="form-control mb-3" type="file" name="foto" id="foto" placeholder="Foto">
+            </div>
+            <div class="card_footer">
+                <button class="form-control btn btn-primary" type="submit">Modificar usuario</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<div class="container mt-5">
+    <div class="card">
+        <form action="/nuevoproducto" method="post" enctype="multipart/form-data">
+            <div class="card-header">
+                <h1>Nuevo producto</h1>
+            </div>
+            <div class="card-body">
+                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" autofocus>
+                <input class="form-control mb-3" type="text" name="descripcion" id="descripcion" placeholder="Descripcion">
+                <input class="form-control mb-3" type="text" name="precio" id="precio" placeholder="Precio">
+                <input class="form-control mb-3" type="file" name="foto" id="foto" placeholder="Foto">
+            </div>
+            <div class="card_footer">
+                <button class="form-control btn btn-primary" type="submit">Guardar producto</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<div class="container mt-5">
+    <div class="card">
+        <form action="/editarproducto" method="post" enctype="multipart/form-data">
+            <div class="card-header">
+                <h1>Modificar productos</h1>
+            </div>
+            <div class="card-body">
+                <input type="hidden" name="id" id="id" value="<%= prod.id%>">
+                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" value="<%= prod.nombre%>" autofocus>
+                <input class="form-control mb-3" type="text" name="descripcion" id="descripcion" placeholder="Descripcion" value="<%= prod.descripcion%>">
+                <input class="form-control mb-3" type="text" name="precio" id="precio" placeholder="Precio" value="<%= prod.precio%>">
+                <input class="form-control mb-3" type="file" name="foto" id="foto" placeholder="Foto">
+            </div>
+            <div class="card_footer">
+                <button class="form-control btn btn-primary" type="submit">Modificar producto</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

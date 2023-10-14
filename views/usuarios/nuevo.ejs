@@ -1,23 +1,57 @@
+        
 <%- include("../templates/encabezado")%>
-<%- include("../templates/menu")%>
 
-<div class="container mt-5">
-    <div class="card">
-        <form action="/nuevousuario" method="post" enctype="multipart/form-data">
-            <div class="card-header">
-                <h1>Nuevo usuario</h1>
+<section class="layout">
+    <div class="sidebar col-sm-auto sticky-top"><%- include("../templates/menu2")%></div>
+    <div class="body">
+
+        <div class="container py-5">
+            <div class="row">
+                <hr class="mb-5">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <span class="anchor" id="formRegister"></span>
+                            
+                            <div class="card card-outline-secondary">
+                                <div class="card-header">
+                                    <h3 class="mb-0">New User</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="/nuevousuario" method="post" class="form" role="form" autocomplete="off" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="inputName">Name</label>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Full name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail3">Username</label>
+                                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Username" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputVerify3">Photo</label>
+                                            <input type="file" class="form-control" id="foto" name="foto" placeholder="Photo" required="">
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-lg float-right">Register</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" autofocus>
-                <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Usuario">
-                <input class="form-control mb-3" type="text" name="password" id="password" placeholder="Password">
-                <input class="form-control mb-3" type="file" name="foto" id="foto" placeholder="Foto">
-            </div>
-            <div class="card_footer">
-                <button class="form-control btn btn-primary" type="submit">Guardar usuario</button>
-            </div>
-        </form>
+        </div>
+
+
     </div>
-</div>
+  </section>
 
 <%- include("../templates/pie")%>
+

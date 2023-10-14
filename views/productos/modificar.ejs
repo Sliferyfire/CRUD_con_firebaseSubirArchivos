@@ -1,24 +1,57 @@
-<%- include("../templates/encabezado")%>
-<%- include("../templates/menu")%>
 
-<div class="container mt-5">
-    <div class="card">
-        <form action="/editarproducto" method="post" enctype="multipart/form-data">
-            <div class="card-header">
-                <h1>Modificar productos</h1>
+<%- include("../templates/encabezado")%>
+
+<section class="layout">
+    <div class="sidebar col-sm-auto sticky-top"><%- include("../templates/menu2")%></div>
+    <div class="body">
+
+        <div class="container py-5">
+            <div class="row">
+                <hr class="mb-5">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <span class="anchor" id="formRegister"></span>
+                            
+                            <div class="card card-outline-secondary">
+                                <div class="card-header">
+                                    <h3 class="mb-0">Modify Product</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="/editarproducto" method="post" class="form" role="form" autocomplete="off" enctype="multipart/form-data">
+                                        <input type="hidden" name="id" id="id" value="<%= prod.id%>">
+                                        
+                                        <div class="form-group">
+                                            <label for="inputName">Name</label>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Full name" value="<%= prod.nombre%>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail3">Description</label>
+                                            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Description" value="<%= prod.descripcion%>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3">Price</label>
+                                            <input type="text" class="form-control" id="precio" name="precio" placeholder="Price" value="<%= prod.precio%>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputVerify3">Photo</label>
+                                            <input type="file" class="form-control" id="foto" name="foto" placeholder="Photo">
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-lg float-right">Modify Product</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <input type="hidden" name="id" id="id" value="<%= prod.id%>">
-                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" value="<%= prod.nombre%>" autofocus>
-                <input class="form-control mb-3" type="text" name="descripcion" id="descripcion" placeholder="Descripcion" value="<%= prod.descripcion%>">
-                <input class="form-control mb-3" type="text" name="precio" id="precio" placeholder="Precio" value="<%= prod.precio%>">
-                <input class="form-control mb-3" type="file" name="foto" id="foto" placeholder="Foto">
-            </div>
-            <div class="card_footer">
-                <button class="form-control btn btn-primary" type="submit">Modificar producto</button>
-            </div>
-        </form>
+        </div>
+
     </div>
-</div>
+  </section>
 
 <%- include("../templates/pie")%>

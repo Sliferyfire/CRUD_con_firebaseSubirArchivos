@@ -1,24 +1,60 @@
-<%- include("../templates/encabezado")%>
-<%- include("../templates/menu")%>
 
-<div class="container mt-5">
-    <div class="card">
-        <form action="/editar" method="post" enctype="multipart/form-data">
-            <div class="card-header">
-                <h1>Modificar usuario</h1>
+<%- include("../templates/encabezado")%>
+
+<section class="layout">
+    <div class="sidebar col-sm-auto sticky-top"><%- include("../templates/menu2")%></div>
+    <div class="body">
+
+        <div class="container py-5">
+            <div class="row">
+                <hr class="mb-5">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <span class="anchor" id="formRegister"></span>
+                            
+                            <div class="card card-outline-secondary">
+                                <div class="card-header">
+                                    <h3 class="mb-0">Modify User</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="/editar" method="post" class="form" role="form" autocomplete="off" enctype="multipart/form-data">
+                                        <input type="hidden" name="id" id="id" value="<%= user.id%>">
+                                        <input type="hidden" name="passwordViejo" id="passwordViejo" value="<%= user.password%>">
+                                        <input type="hidden" name="saltViejo" id="saltViejo" value="<%= user.salt%>">
+                                        <input type="hidden" name="fotoVieja" id="fotoVieja" value="<%= user.foto%>">
+                                        
+                                        <div class="form-group">
+                                            <label for="inputName">Name</label>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Full name" value="<%= user.nombre%>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail3">Username</label>
+                                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Username" required="" value="<%= user.usuario%>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Write a new password if you want to change it" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputVerify3">Photo</label>
+                                            <input type="file" class="form-control" id="foto" name="foto" placeholder="Photo">
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-lg float-right">Modify</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <input type="hidden" name="id" id="id" value="<%= user.id%>">
-                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Nombre" value="<%= user.nombre%>" autofocus>
-                <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Usuario" value="<%= user.usuario%>">
-                <input class="form-control mb-3" type="text" name="password" id="password" placeholder="Password" value="<%= user.password%>">
-                <input class="form-control mb-3" type="file" name="foto" id="foto" placeholder="Foto">
-            </div>
-            <div class="card_footer">
-                <button class="form-control btn btn-primary" type="submit">Modificar usuario</button>
-            </div>
-        </form>
+        </div>
+
     </div>
-</div>
+  </section>
 
 <%- include("../templates/pie")%>

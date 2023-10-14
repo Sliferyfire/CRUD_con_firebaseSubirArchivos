@@ -6,11 +6,16 @@ var rutasPr = require("./rutas/productosRutas");
 var rutasUsuariosApis = require("./rutas/usuariosRutasApis");
 var rutasProductosApis = require("./rutas/productosRutasApis");
 
+
+
 var app = express();
 app.set("view engine", "ejs");
 app.use(cors());
 app.use(express.urlencoded({extended:true}));
 app.use("/", express.static(path.join(__dirname,"/web")))
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/icons', express.static(__dirname + '/node_modules/bootstrap-icons/font/fonts'))
 app.use("/",rutas);
 app.use("/",rutasPr);
 app.use("/",rutasUsuariosApis);

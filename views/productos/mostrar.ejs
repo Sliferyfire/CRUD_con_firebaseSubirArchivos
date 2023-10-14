@@ -1,50 +1,56 @@
+
 <%- include("../templates/encabezado")%>
-<%- include("../templates/menu")%>
 
+<section class="layout">
+    <div class="sidebar col-sm-auto sticky-top"><%- include("../templates/menu2")%></div>
+    <div class="body">
 
-<div class="container mt-5">
-    <div class="card">
-        <div class="card-header">
-            <h1>Productos</h1>
+        <div class="container mt-5 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Productos</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Nombre</th>
+                                <th>Descipcion</th>
+                                <th>Precio</th>
+                                <th>Foto(preview)</th>
+                                <th>Editar/Borrar</th>
+                                <th>Editar/Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                productos.forEach((producto)=>{
+                            %>
+                            <tr>
+                                <td><%= producto.id%></td>  
+                                <td><%= producto.nombre%></td>
+                                <td><%= producto.descripcion%></td>
+                                <td>$<%= producto.precio%></td>
+                                <td><%= producto.foto%></td>
+                                <td><img src="/productos_img/<%= producto.foto%>" width="100px"></td>
+                                <td>
+                                    <a href="/editarproducto/<%= producto.id%>" style="text-decoration: none;">Editar</a>
+                                    /
+                                    <a href="/borrarproducto/<%= producto.id%>" style="text-decoration: none;">Borrar</a>
+                                </td>
+                            </tr>
+                            <%
+                                });
+                            %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer"></div>
+            </div>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Nombre</th>
-                        <th>Descipcion</th>
-                        <th>Precio</th>
-                        <th>Foto(preview)</th>
-                        <th>Editar/Borrar</th>
-                        <th>Editar/Borrar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                        productos.forEach((producto)=>{
-                    %>
-                    <tr>
-                        <td><%= producto.id%></td>  
-                        <td><%= producto.nombre%></td>
-                        <td><%= producto.descripcion%></td>
-                        <td><%= producto.precio%></td>
-                        <td><%= producto.foto%></td>
-                        <td><img src="/productos_img/<%= producto.foto%>" width="100px"></td>
-                        <td>
-                            <a href="/editarproducto/<%= producto.id%>">Editar</a>
-                            /
-                            <a href="/borrarproducto/<%= producto.id%>">Borrar</a>
-                        </td>
-                    </tr>
-                    <%
-                        });
-                    %>
-                </tbody>
-            </table>
-        </div>
-        <div class="card-footer"></div>
+
     </div>
-</div>
+  </section>
 
 <%- include("../templates/pie")%>
