@@ -39,6 +39,7 @@ async function nuevoUsuario(datos){
     var {hash,salt}= encriptarPassword(datos.password);
     datos.password = hash;
     datos.salt = salt;
+    datos.admin = false;
     var user = new Usuario(null,datos);
     var error = 1;
     if (user.bandera == 0){
@@ -59,6 +60,7 @@ async function modificarUsuario(datos){
     // console.log(datos.fotoVieja); 
     // console.log(datos.password); ""
     // console.log(datos.passwordViejo); 
+    datos.admin = false;
     var error = 1; 
     var respuestaBuscar = await buscarPorID(datos.id);
     if (respuestaBuscar != undefined){

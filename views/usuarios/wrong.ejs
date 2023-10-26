@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/public/wrongSuccess.css">
 
 <section class="layout">
-    <div class="sidebar col-sm-auto  sticky-top"><%- include("../templates/menu2")%></div>
+    <div class="sidebar bg-dark col-sm-auto sticky-top"><%- include("../templates/menu2")%></div>
     <div class="body_WS">
 
         <div id="container">
@@ -16,7 +16,7 @@
                 <div class="mouth sad"></div>
               </div>
               <div class="shadow move"></div>
-              <div class="message"><h1 class="alert">Error!</h1><h1>oh no, something went wrong.</div>
+              <div class="message"><h1 class="alert">Error!</h1><h1>oh no, something went wrong. <%= mensaje%> </h1></div>
               <a href="/wrong"><button class="button-box"><h1 class="red">try again</h1></button></a>
             </div>
           </div>

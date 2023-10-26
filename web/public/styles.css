@@ -1,12 +1,14 @@
 
 
 .layout {
-
   display: grid;
   grid:
     "sidebar body" 1fr
     / auto 1fr;
   gap: 8px;
+
+  height: 100vh;
+  
 }
 
 .sidebar { grid-area: sidebar; }
